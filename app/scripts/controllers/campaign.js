@@ -15,7 +15,6 @@ angular.module('placardUiApp')
 
     $scope.$watch('offset', function(val) {
     	$scope.transform = 'translateX(-' + val + '%)';
-    	console.log($scope.transform);
     });
 
     $scope.nextColumn = function() {
@@ -62,16 +61,29 @@ angular.module('placardUiApp')
     	}
     };
 
-    $scope.columnQuery = wpAPIResource.query({
+    $scope.columns = [];
+    $scope.campaignQuery = wpAPIResource.get({
     	param1: 'posts',
-    	type: 'column',
-    });
-
-    $scope.$watch('columnQuery', function(value) {
-    	value.$promise.then(function(data){
-			$scope.columns = data;
-			$scope.maxOffset = 95*$scope.columns.length;
-			console.log($scope.columns);
-		});
+    	param2: $stateParams.id,
+    }).$promise.then(function(data){
+    	if(data.type === 'campaign') {
+    		$scope.campaign = data;
+    		console.log($scope.campaign);
+    		angular.forEach($scope.campaign.acf.columns, function(column, key) {
+    			$scope.columnQuery = wpAPIResource.get({
+    				param1: 'posts',
+    				param2: column.ID,
+    			}).$promise.then(function(d){
+    				if(d.type === 'column') {
+    					$scope.columns.push(d);
+    				} else {
+    					console.log('Found column attached that wasn\'t of type column');
+    				}
+    			});
+    		});
+    		console.log($scope.columns);
+    	} else {
+    		console.log('No campaign found!');
+    	}
     });
   });
