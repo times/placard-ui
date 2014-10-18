@@ -9,8 +9,6 @@
  */
 angular.module('placardUiApp')
   .controller('CampaignCtrl', function ($scope, wpAPIResource, $stateParams, $timeout) {
-    $scope.id = $stateParams.id;
-
     $scope.transform = 'translateX(0)';
     $scope.offset = 0;
     $scope.move = 100;
@@ -64,114 +62,16 @@ angular.module('placardUiApp')
     	}
     };
 
-    $scope.columns = [
-    	{
-    		cards: [
-		    	{
-		    		icon: 'fa fa-file-o',
-		    		header: 'Title Card 1',
-		    		stand: 'Stand!',
-		    		body: '<p>This is my body text in <strong>HTML</strong> form!</p>',
-		    		footer: 'My footer!'
-		    	},
-		    	{
-		    		icon: 'fa fa-video-camera',
-		    		header: 'Title Card 2',
-		    		stand: 'Stand!',
-		    		body: '<ul><li>Check</li><li>out</li><li>my</li><li>list</li></ul>',
-		    		footer: null,
-		    	},
-		    	{
-		    		icon: 'fa fa-quote-right',
-		    		header: 'Title Card 3',
-		    		stand: 'Stand!',
-		    		body: 'Test!',
-		    		footer: ''
-		    	}
-		    ],
-		    title: 'Col 1!',
-		},
-		{
-    		cards: [
-		    	{
-		    		icon: 'fa fa-file-o',
-		    		header: 'Title Card 1',
-		    		stand: 'Stand!',
-		    		body: '<p>This is my body text in <strong>HTML</strong> form!</p>',
-		    		footer: 'My footer!'
-		    	},
-		    	{
-		    		icon: 'fa fa-video-camera',
-		    		header: 'Title Card 2',
-		    		stand: 'Stand!',
-		    		body: '<ul><li>Check</li><li>out</li><li>my</li><li>list</li></ul>',
-		    		footer: null,
-		    	},
-		    	{
-		    		icon: 'fa fa-quote-right',
-		    		header: 'Title Card 3',
-		    		stand: 'Stand!',
-		    		body: 'Test!',
-		    		footer: ''
-		    	}
-		    ],
-		    title: 'Col 2!',
-		},
-		{
-    		cards: [
-		    	{
-		    		icon: 'fa fa-file-o',
-		    		header: 'Title Card 1',
-		    		stand: 'Stand!',
-		    		body: '<p>This is my body text in <strong>HTML</strong> form!</p>',
-		    		footer: 'My footer!'
-		    	},
-		    	{
-		    		icon: 'fa fa-video-camera',
-		    		header: 'Title Card 2',
-		    		stand: 'Stand!',
-		    		body: '<ul><li>Check</li><li>out</li><li>my</li><li>list</li></ul>',
-		    		footer: null,
-		    	},
-		    	{
-		    		icon: 'fa fa-quote-right',
-		    		header: 'Title Card 3',
-		    		stand: 'Stand!',
-		    		body: 'Test!',
-		    		footer: ''
-		    	}
-		    ],
-		    title: 'Col 3!',
-		},
-		{
-    		cards: [
-		    	{
-		    		icon: 'fa fa-file-o',
-		    		header: 'Title Card 1',
-		    		stand: 'Stand!',
-		    		body: '<p>This is my body text in <strong>HTML</strong> form!</p>',
-		    		footer: 'My footer!'
-		    	},
-		    	{
-		    		icon: 'fa fa-video-camera',
-		    		header: 'Title Card 2',
-		    		stand: 'Stand!',
-		    		body: '<ul><li>Check</li><li>out</li><li>my</li><li>list</li></ul>',
-		    		footer: null,
-		    	},
-		    	{
-		    		icon: 'fa fa-quote-right',
-		    		header: 'Title Card 3',
-		    		stand: 'Stand!',
-		    		body: 'Test!',
-		    		footer: ''
-		    	}
-		    ],
-		    title: 'Col 4!',
-		},
-    ];
+    $scope.columnQuery = wpAPIResource.query({
+    	param1: 'posts',
+    	type: 'column',
+    });
 
-    $scope.maxOffset = 95*$scope.columns.length;
-
-    $scope.cards = $scope.columns[$stateParams.colid];
+    $scope.$watch('columnQuery', function(value) {
+    	value.$promise.then(function(data){
+			$scope.columns = data;
+			$scope.maxOffset = 95*$scope.columns.length;
+			console.log($scope.columns);
+		});
+    });
   });

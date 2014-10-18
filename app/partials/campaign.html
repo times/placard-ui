@@ -2,13 +2,39 @@
 	<ul class="bs-column-wrap" ng-style="{'transform': transform, '-webkit-transform': transform, '-ms-transform': transform}">
 		<li class="bs-column" ng-repeat="column in columns" hm-swipeLeft="nextColumn()" hm-dragLeft="dragNextColumn()" hm-swipeRight="prevColumn()" hm-dragRight="dragPrevColumn()" hm-options="{tap_always: false}">
 			<h1>{{column.title}}</h1>
-			<div class="bs-card" ng-repeat="card in column.cards">
-				<div class="bs-card-header">
-					<i ng-class="card.icon" class="pull-right"></i>
-					<h2>{{card.header}}</h2>
-					<p>{{card.stand}}</p>
+			<div ng-repeat="card in column.acf.cards">
+				<div ng-switch="card.acf_fc_layout">
+					<!-- Article -->
+					<div ng-switch-when="article" class="bs-card">
+						<div class="bs-card-header bs-card-article">
+							<i class="fa fa-page" class="pull-right"></i>
+							<h2>{{card.headline}}</h2>
+							<p>{{card.author}}</p>
+						</div>
+						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
+					</div>
+
+					<!-- Image -->
+					<div ng-switch-when="article" class="bs-card">
+						<div class="bs-card-header bs-card-image">
+							<i class="fa fa-photo" class="pull-right"></i>
+							<h2>Image Name</h2>
+						</div>
+						<div class="bs-card-body" ng-if="card.image">
+							<img ng-src="card.image" />
+						</div>
+					</div>
+
+					<!-- Video -->
+					<div ng-switch-when="article" class="bs-card">
+						<div class="bs-card-header bs-card-article">
+							<i ng-class="card.icon" class="pull-right"></i>
+							<h2>{{card.headline}}</h2>
+							<p>{{card.author}}</p>
+						</div>
+						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
+					</div>
 				</div>
-				<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
 			</div>
 		</li>
 	</ul>
