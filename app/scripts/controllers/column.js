@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name placardUiApp.controller:MainCtrl
+ * @name placardUiApp.controller:ColumnCtrl
  * @description
- * # MainCtrl
+ * # ColumnCtrl
  * Controller of the placardUiApp
  */
 angular.module('placardUiApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.true = true;
+  .controller('ColumnCtrl', function ($scope, $stateParams) {
+    
   });

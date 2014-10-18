@@ -15,19 +15,32 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router',
+    'hmTouchEvents'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function($stateProvider, $urlRouterProvider) {
+    
+    // If no matching state found
+    $urlRouterProvider.otherwise('/home');
+
+    // Setup our states
+    var home = {
+      name: 'home',
+      url: '/home',
+      templateUrl: 'partials/home.html',
+      controller: 'MainCtrl',
+    };
+
+    var campaign = {
+      name: 'campaign',
+      url: '/campaign/:id',
+      templateUrl: 'partials/campaign.html',
+      controller: 'CampaignCtrl',
+    };
+
+    // Do the states!
+    $stateProvider
+      .state(home)
+      .state(campaign);
   });

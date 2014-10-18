@@ -1,0 +1,17 @@
+.bs-navbar {
+	opacity: 0.8;
+
+	-webkit-transition: opacity 0.2s;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.bs-logo {
+	width: 100%;
+	img {
+		margin: 0 auto; max-height: 100%; max-width: 100%;
+		display: block;
+	}
+}

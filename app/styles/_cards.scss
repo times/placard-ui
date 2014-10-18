@@ -1,0 +1,40 @@
+.bs-card {
+	width: 100%;
+	background-color: $card-background;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	overflow: hidden;
+
+	.bs-card-header {
+		display: block;
+		background-color: $card-header;
+		padding: 6px 12px;
+		color: #FFF;
+
+		h2 {
+			font-family: $header-font;
+			text-transform: uppercase;
+			font-size: 24px;
+			margin: 5px 0 0;
+			padding: 0;
+		}
+
+		p {
+			font-family: $header-font;
+			text-transform: uppercase;
+			font-size: 14px;
+			margin: 0;
+			padding: 0;
+		}
+
+		i{
+			font-size: 22px;
+			line-height: 1.2em;
+		}
+	}
+
+	.bs-card-body {
+		display: block;
+		padding: 15px 12px 10px;
+	}
+}

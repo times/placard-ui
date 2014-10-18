@@ -1,7 +1,10 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+
+@import "variables";
 
 .browsehappy {
   margin: 0.2em 0;
@@ -10,83 +13,46 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+html, body, div.ng-scope {
+  height: 100%;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+body { 
+  font-family: $body-font;
+  padding-top: 20px
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
+@import "header";
 
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+.bs-wrapper{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 60px 10px 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.bs-column-scroll {
+  overflow: hidden;
+  margin: 0; padding: 0;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.bs-column-wrap {
+  white-space: nowrap;
+  -webkit-transition: all 0.5s;
+  overflow-x: visible;
+  margin: 0; padding: 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
+.bs-column {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+@import "cards";
 
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
+@import "footer";
