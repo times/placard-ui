@@ -19,7 +19,6 @@ html, body, div.ng-scope {
 
 body { 
   font-family: $body-font;
-  padding-top: 20px
 }
 
 @import "header";
@@ -30,14 +29,15 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 60px 10px 10px;
-  overflow-y: scroll;
+  padding: 40px 10px 0px;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
 .bs-column-scroll {
-  overflow: hidden;
-  margin: 0; padding: 0;
+  overflow-x: hidden;
+  margin: 0; 
+  height: 100%;
 }
 
 .bs-column-wrap {
@@ -45,12 +45,15 @@ body {
   -webkit-transition: all 0.5s;
   overflow-x: visible;
   margin: 0; padding: 0;
+  height: 100%;
 }
 
 .bs-column {
   display: inline-block;
   width: 100%;
   padding: 20px;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 @import "cards";
