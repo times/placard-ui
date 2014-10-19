@@ -1,7 +1,7 @@
 <div class="bs-wrapper bs-column-scroll" style="background-image: url(images/background.png);">
 	<ul class="bs-column-wrap" ng-style="{'transform': transform, '-webkit-transform': transform, '-ms-transform': transform}">
 		<li class="bs-column" ng-repeat="column in columns" hm-swipeLeft="nextColumn()" hm-dragLeft="dragNextColumn()" hm-swipeRight="prevColumn()" hm-dragRight="dragPrevColumn()" hm-options="{tap_always: false}">
-			<h1>{{column.title}}</h1>
+			<h1 ng-bind-html="column.title"></h1>
 			<div ng-repeat="card in column.acf.cards">
 				<div ng-switch="card.acf_fc_layout">
 					<!-- Article -->
