@@ -142,6 +142,5 @@ angular.module('placardUiApp')
 
     $scope.$watch('totalColumns', function(data) {
         $scope.maxOffset = $scope.move*$scope.totalColumns;
-        console.log($scope.columns);
     });
   });

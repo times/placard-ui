@@ -65,6 +65,21 @@
 			display: block;
 		}
 
+		cite {
+			font-family: $standfirst-font;
+			text-transform: uppercase;
+			margin: 5px auto;
+			text-align: center;
+			display: block;
+			font-size: 16px;
+		}
+
+		h4.number {
+			font-size: 50px;
+			font-family: $header-font;
+			text-align: center;
+		}
+
 		.bs-body-content {
 		}
 	}

@@ -34,7 +34,7 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 0px 10px 0px;
+  padding: 0px;
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -56,9 +56,10 @@ body {
 .bs-column {
   display: inline-block;
   width: 100%;
-  padding: 20px;
+  padding: 20px 10px;
   height: 100%;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   .bs-title {
     color: #000; font-size: 60px;
@@ -70,6 +71,8 @@ body {
     white-space: initial;
     text-transform: uppercase;
     margin-top: 0;
+    margin-bottom: 20px;
+    word-wrap: break-word;
   }
 }
 
@@ -90,7 +93,7 @@ body {
 }
 
 .bs-progress-bar {
-  background: #FFF; height: 4px;
+  background: #000; height: 4px;
   transition: width 0.4s;
   opacity: 0.8;
   width: 0%;
@@ -107,6 +110,10 @@ body {
 
 .bs-next-btn {
   right: 10px;
+}
+
+.bs-btn {
+  white-space: initial;
 }
 
 @import "cards";
