@@ -17,6 +17,16 @@ angular.module('placardUiApp')
         angular.element('.zoom-button i').bind('click', function(){
           angular.element('body').toggleClass('zoom-out');
           angular.element('.bs-column').scrollTop(0);
+
+          if (angular.element('body').hasClass('zoom-out')) {
+            angular.element('.bs-card').bind('click.zoom', function(){
+              angular.element('body').removeClass('zoom-out');
+              scope.columnCount = this.parent().parent().parent().index() + 1;
+              this.parent().parent().parent().scrollTop(this.offset().top);
+            });
+          } else {
+            angular.element('.bs-card').unbind('click.zoom');
+          }
         });
         $timeout(function(){
           scope.$watch('columnCount', function(){
