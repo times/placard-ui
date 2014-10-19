@@ -4,7 +4,6 @@
     overflow-y: hidden;
     transform: translateX(0%) !important;
     -webkit-overflow-scrolling: touch;
-    -moz-transform: scale(0.45, 0.45); /* Moz-browsers */
     zoom: 0.45; /* Other non-webkit browsers */
     zoom: 45%; /* Webkit browsers */
   }
