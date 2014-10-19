@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'hmTouchEvents'
+    'hmTouchEvents',
+    'cfp.hotkeys'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     

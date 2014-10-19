@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>placard - The Sunday Times</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta content="yes" name="apple-mobile-web-app-capable" />
@@ -11,6 +11,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -28,7 +29,7 @@
     <!-- Add your site or application content here -->
     <nav class="navbar navbar-default navbar-fixed-top bs-navbar" role="navigation">
       <div class="container-fluid">
-          <a class="navbar-brand bs-logo" ng-click="home()"><img src="images/logo.png" srcset="images/logo@2x.png 2x" /></a>
+          <a class="navbar-brand bs-logo" ui-sref="home"><img src="images/logo.png" srcset="images/logo@2x.png 2x" /></a>
       </div><!-- /.container-fluid -->
     </nav>
 
@@ -77,6 +78,7 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/hammerjs/hammer.js"></script>
     <script src="bower_components/angular-hammer/angular-hammer.js"></script>
+    <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -85,7 +87,6 @@
         <script src="scripts/services/wpapiresource.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/campaign.js"></script>
-        <script src="scripts/controllers/column.js"></script>
         <!-- endbuild -->
 </body>
 </html>
