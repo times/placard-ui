@@ -1,21 +1,23 @@
-<div class="bs-wrapper bs-column-scroll" style="background-image: url(images/background.png);">
+<div class="bs-wrapper bs-column-scroll">
 	<ul class="bs-column-wrap" ng-style="{'transform': transform, '-webkit-transform': transform, '-ms-transform': transform}">
-		<li class="bs-column" ng-repeat="column in columns" hm-swipeLeft="nextColumn()" hm-dragLeft="dragNextColumn()" hm-swipeRight="prevColumn()" hm-dragRight="dragPrevColumn()" hm-options="{tap_always: false}">
-			<h1 ng-bind-html="column.title"></h1>
+		<li class="bs-column bs-intro-column" ng-repeat="column in introColumns" hm-swipeLeft="nextColumn()" hm-dragLeft="dragNextColumn()" hm-swipeRight="prevColumn()" hm-dragRight="dragPrevColumn()" hm-options="{tap_always: false}">
 			<div ng-repeat="card in column.acf.cards">
 				<div ng-switch="card.acf_fc_layout">
 					<!-- Article -->
-					<div ng-switch-when="article" class="bs-card">
-						<div class="bs-card-header bs-card-article">
-							<i class="fa fa-page" class="pull-right"></i>
-							<h2>{{card.headline}}</h2>
-							<p>{{card.author}}</p>
+					<div ng-switch-when="article" class="bs-card bs-intro">
+						<div class="col-xs-3 col-sm-2 col-md-1 bs-no-padding-right">
+							<div class="bs-icon-aside"><img src="images/icon.png" /></div>
 						</div>
-						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
+						<div class="col-xs-9 col-sm-10 col-md-11 bs-no-padding-left">
+							<div class="bs-card-header bs-card-article">
+								<h2>{{card.headline}}</h2>
+							</div>
+							<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
+						</div>
 					</div>
 
 					<!-- Image -->
-					<div ng-switch-when="article" class="bs-card">
+					<div ng-switch-when="image" class="bs-card bs-intro">
 						<div class="bs-card-header bs-card-image">
 							<i class="fa fa-photo" class="pull-right"></i>
 							<h2>Image Name</h2>
@@ -26,13 +28,66 @@
 					</div>
 
 					<!-- Video -->
-					<div ng-switch-when="article" class="bs-card">
+					<div ng-switch-when="video" class="bs-card bs-intro">
 						<div class="bs-card-header bs-card-article">
 							<i ng-class="card.icon" class="pull-right"></i>
 							<h2>{{card.headline}}</h2>
 							<p>{{card.author}}</p>
 						</div>
 						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="bs-column" ng-repeat="column in columns" hm-swipeLeft="nextColumn()" hm-dragLeft="dragNextColumn()" hm-swipeRight="prevColumn()" hm-dragRight="dragPrevColumn()" hm-options="{tap_always: false}">
+			<h1 class="bs-title">{{column.title}}</h1>
+			<div ng-repeat="(key, card) in column.acf.cards">
+			{{card.acf_fc_layout}}
+				<div ng-switch="card.acf_fc_layout">
+					<!-- Article -->
+					<div ng-switch-when="article" class="bs-card" ng-click="show = !show">
+						<div class="bs-card-header bs-card-article">
+							<img src="images/icon.png" />
+							<i class="fa fa-ra" class="pull-right"></i>
+						</div>
+						<div class="bs-card-body" ng-if="card.body">
+							<h2>{{card.headline}}</h2>
+							<aside>{{card.standfirst}}</aside>
+							<div class="bs-body-content" ng-show="$parent.show" ng-bind-html="card.body"></div>
+						</div>
+					</div>
+
+					<!-- Image -->
+					<div ng-switch-when="image" class="bs-card">
+						<div class="bs-card-header bs-card-image">
+							<img src="images/icon.png" />
+							<i class="fa fa-photo" class="pull-right"></i>
+						</div>
+						<div class="bs-card-body">
+							<img ng-src="{{card.image.url}}" />
+						</div>
+					</div>
+
+					<!-- Video -->
+					<div ng-switch-when="video" class="bs-card">
+						<div class="bs-card-header bs-card-article">
+							<img src="images/icon.png" />
+							<i ng-class="card.icon" class="pull-right"></i>
+							<h2>{{card.headline}}</h2>
+							<p>{{card.author}}</p>
+						</div>
+						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
+					</div>
+
+					<!-- Social -->
+					<div ng-switch-when="social" class="bs-card">
+					{{card}}
+						<div class="bs-card-header bs-card-article">
+							<img src="images/icon.png" />
+							<i class="fa fa-tweet" class="pull-right"></i>
+						</div>
+						{{card}}
+						<div class="bs-card-body">{{card}}</div>
 					</div>
 				</div>
 			</div>

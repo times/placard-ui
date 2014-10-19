@@ -90,16 +90,58 @@ angular.module('placardUiApp')
     };
 
     // Get the columns
-    $scope.columnQuery = wpAPIResource.query({
-    	param1: 'posts',
-    	type: 'column',
-    }).$promise.then(function(data){
-        $scope.columns = data;
-        $scope.maxOffset = 95*$scope.columns.length;
-        $scope.totalColumns = data.length;
+    $scope.columns = [];
+    $scope.totalColumns = 0;
+    $scope.campaignQuery = wpAPIResource.get({
+        param1: 'posts',
+        param2: $stateParams.id
+    }).$promise.then(function(data) {
+        $scope.campaign = data;
+        angular.forEach($scope.campaign.acf.columns, function(value, key) {
+            wpAPIResource.get({
+                param1: 'posts',
+                param2: value.ID,
+            }).$promise.then(function(data){
+                ++$scope.totalColumns;
 
-        $scope.$watch('columnCount', function(data) {
-            $scope.width = $filter('number')((data/$scope.totalColumns)*100, 2) + '%';
+                var currentColumns = $scope.columns;
+                var newColumns = currentColumns.concat(data);
+                $scope.columns = newColumns;
+
+                $scope.width = $filter('number')((1/$scope.totalColumns)*100, 2) + '%';
+            });
         });
+    }); 
+
+    // Get the intro columns
+    $scope.introColumns = [];
+    $scope.campaignQuery = wpAPIResource.get({
+        param1: 'posts',
+        param2: $stateParams.id
+    }).$promise.then(function(data) {
+        $scope.campaign = data;
+        angular.forEach($scope.campaign.acf.introduction_columns, function(value, key) {
+            wpAPIResource.get({
+                param1: 'posts',
+                param2: value.ID,
+            }).$promise.then(function(data){
+                ++$scope.totalColumns;
+
+                var currentIntroColumns = $scope.introColumns;
+                var newIntroColumns = currentIntroColumns.concat(data);
+                $scope.introColumns = newIntroColumns;
+
+                $scope.width = $filter('number')((1/$scope.totalColumns)*100, 2) + '%';
+            });
+        });
+    }); 
+
+    $scope.$watch('columnCount', function(data) {
+        $scope.width = $filter('number')((data/$scope.totalColumns)*100, 2) + '%';
+    });
+
+    $scope.$watch('totalColumns', function(data) {
+        $scope.maxOffset = $scope.move*$scope.totalColumns;
+        console.log($scope.columns);
     });
   });

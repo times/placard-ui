@@ -19,6 +19,7 @@ html, body, body > div.ng-scope {
 
 body {
   font-family: $body-font;
+  padding-top: 50px;
 }
 
 @import "header";
@@ -33,7 +34,7 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 40px 10px 0px;
+  padding: 0px 10px 0px;
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -58,6 +59,26 @@ body {
   padding: 20px;
   height: 100%;
   overflow-y: scroll;
+
+  .bs-title {
+    color: #000; font-size: 60px;
+    line-height: 53px;
+    background: $card-header;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: $header-font;
+    white-space: initial;
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+}
+
+.bs-no-padding-right {
+  padding-right: 0;
+}
+
+.bs-no-padding-left {
+  padding-left: 0;
 }
 
 .bs-progress {
@@ -72,6 +93,7 @@ body {
   background: #FFF; height: 4px;
   transition: width 0.4s;
   opacity: 0.8;
+  width: 0%;
 }
 
 .bs-fixed-nav {
