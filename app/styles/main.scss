@@ -15,6 +15,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 html, body, body > div.ng-scope {
   height: 100%;
+  -webkit-text-size-adjust: auto;
 }
 
 body {

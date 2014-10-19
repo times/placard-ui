@@ -84,15 +84,11 @@
 
 					<!-- Social -->
 					<div ng-switch-when="social" class="bs-card">
-						<div class="bs-card-header bs-card-article">
+						<div class="bs-card-header bs-card-article" ng-if="card.single_tweet">
 							<img src="images/longicon.png" />
 							<i class="fa fa-twitter pull-right"></i>
 						</div>
 						<div class="bs-card-body">
-							<div ng-if="card.twitter_timeline" ng-bind-html="card.twitter_timeline"></div>
-							<div ng-if="card.follow_button" ng-bind-html="card.follow_button"></div>
-							<div ng-if="card.like_button" ng-bind-html="card.like_button"></div>
-							<div ng-if="card.tweet_button" ng-bind-html="card.tweet_button"></div>
 							<div ng-if="card.single_tweet" ng-bind-html="card.single_tweet"></div>
 						</div>
 					</div>
@@ -134,6 +130,20 @@
 								    <textarea class="form-control" id="exampleInputEmail1"></textarea>
 								  </div>
 								  <button type="submit" class="btn btn-default">Send Message</button>
+								</form>
+							</div>
+							<div ng-switch-when="login" class="bs-card-body">
+								<h4 class="number">Log in to The Sunday Times</h4>
+								<form role="form">
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Email Address</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Password</label>
+								    <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Password">
+								  </div>
+								  <button type="submit" class="btn btn-default">Log In</button>
 								</form>
 							</div>
 						</div>
