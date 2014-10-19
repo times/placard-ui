@@ -14,7 +14,7 @@ angular.module('placardUiApp')
       link: function postLink(scope, element) {
         var previousScroll = 0;
         var currentColumn;
-        angular.element('.zoom-button').bind('click', function(){
+        angular.element('.zoom-button i').bind('click', function(){
           angular.element('body').toggleClass('zoom-out');
           angular.element('.bs-column').scrollTop(0);
         });

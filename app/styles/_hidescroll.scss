@@ -3,10 +3,14 @@
     overflow-x: scroll;
     overflow-y: hidden;
     transform: translateX(0%) !important;
+    -webkit-overflow-scrolling: touch;
+    -moz-transform: scale(0.45, 0.45); /* Moz-browsers */
+    zoom: 0.45; /* Other non-webkit browsers */
+    zoom: 45%; /* Webkit browsers */
   }
 
   .bs-column {
-    width: 23%;
+    width: 40%;
     overflow-y: hidden;
     overflow-x: hidden;
   }
@@ -29,6 +33,7 @@ hidescroll {
     font-size: 50px;
     color: white;
     margin-top: -12px;
+    z-index: 2;
   }
 
   .progress {
@@ -44,5 +49,6 @@ hidescroll {
     left: 20px;
     font-size: 30px;
     font-family: $header-font;
+    display: inline-block;
   }
 }
