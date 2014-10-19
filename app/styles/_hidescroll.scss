@@ -15,9 +15,10 @@
 hidescroll {
   position: relative;
   bottom: 0px;
-  background: rgba(171, 166, 195, 0.8);
+  background: rgba(223, 231, 235, 0.8);
   overflow: hidden;
   display: block;
+  -webkit-transition: bottom 0.2s;
 
   &.visible {
     bottom: 54px;
@@ -42,5 +43,6 @@ hidescroll {
     top: 8px;
     left: 20px;
     font-size: 30px;
+    font-family: $header-font;
   }
 }

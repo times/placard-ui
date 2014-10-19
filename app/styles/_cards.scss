@@ -36,7 +36,7 @@
 
 	.bs-card-body {
 		display: block;
-		padding: 0px 12px 10px;
+		padding: 0px 12px 15px;
 		white-space: initial;
 
 		p {
@@ -56,6 +56,13 @@
 			font-family: $standfirst-font;
 			font-size: 25px;
 			margin-bottom: 20px;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+			margin: 0 auto;
+			display: block;
 		}
 
 		.bs-body-content {

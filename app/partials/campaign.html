@@ -40,7 +40,7 @@
 			</div>
 		</li>
 		<li class="bs-column" ng-repeat="column in columns" hm-swipeLeft="nextColumn()" hm-dragLeft="dragNextColumn()" hm-swipeRight="prevColumn()" hm-dragRight="dragPrevColumn()" hm-options="{tap_always: false}">
-			<h1 class="bs-title">{{column.title}}</h1>
+			<h1 class="bs-title" ng-bind-html="column.title"></h1>
 			<div ng-repeat="(key, card) in column.acf.cards">
 			{{card.acf_fc_layout}}
 				<div ng-switch="card.acf_fc_layout">
@@ -51,7 +51,7 @@
 							<i class="fa fa-ra" class="pull-right"></i>
 						</div>
 						<div class="bs-card-body" ng-if="card.body">
-							<h2>{{card.headline}}</h2>
+							<h2 ng-bind-html="card.headline"></h2>
 							<aside>{{card.standfirst}}</aside>
 							<div class="bs-body-content" ng-show="$parent.show" ng-bind-html="card.body"></div>
 						</div>
@@ -73,7 +73,7 @@
 						<div class="bs-card-header bs-card-article">
 							<img src="images/icon.png" />
 							<i ng-class="card.icon" class="pull-right"></i>
-							<h2>{{card.headline}}</h2>
+							<h2 ng-bind-html="card.headline"></h2>
 							<p>{{card.author}}</p>
 						</div>
 						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
