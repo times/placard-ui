@@ -26,16 +26,6 @@
 							<img ng-src="card.image" />
 						</div>
 					</div>
-
-					<!-- Video -->
-					<div ng-switch-when="video" class="bs-card bs-intro">
-						<div class="bs-card-header bs-card-article">
-							<i ng-class="card.icon" class="pull-right"></i>
-							<h2>{{card.headline}}</h2>
-							<p>{{card.author}}</p>
-						</div>
-						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
-					</div>
 				</div>
 			</div>
 		</li>
@@ -46,8 +36,8 @@
 					<!-- Article -->
 					<div ng-switch-when="article" class="bs-card" ng-click="show = !show">
 						<div class="bs-card-header bs-card-article">
-							<img src="images/icon.png" />
-							<i class="fa fa-ra" class="pull-right"></i>
+							<img src="images/longicon.png" />
+							<i class="fa fa-newspaper-o" class="pull-right"></i>
 						</div>
 						<div class="bs-card-body" ng-if="card.body">
 							<h2 ng-bind-html="card.headline"></h2>
@@ -60,7 +50,7 @@
 					<!-- Image -->
 					<div ng-switch-when="image" class="bs-card">
 						<div class="bs-card-header bs-card-image">
-							<img src="images/icon.png" />
+							<img src="images/longicon.png" />
 							<i class="fa fa-photo" class="pull-right"></i>
 						</div>
 						<div class="bs-card-body">
@@ -72,7 +62,7 @@
 					<!-- Number -->
 					<div ng-switch-when="number" class="bs-card">
 						<div class="bs-card-header bs-card-number">
-							<img src="images/icon.png" />
+							<img src="images/longicon.png" />
 							<i class="fa fa-gbp" class="pull-right"></i>
 						</div>
 						<div class="bs-card-body">
@@ -81,21 +71,10 @@
 						</div>
 					</div>
 
-					<!-- Video -->
-					<div ng-switch-when="video" class="bs-card">
-						<div class="bs-card-header bs-card-article">
-							<img src="images/icon.png" />
-							<i ng-class="card.icon" class="pull-right"></i>
-							<h2 ng-bind-html="card.headline"></h2>
-							<p>{{card.author}}</p>
-						</div>
-						<div class="bs-card-body" ng-if="card.body" ng-bind-html="card.body"></div>
-					</div>
-
 					<!-- Button -->
 					<div ng-switch-when="button" class="bs-card">
 						<div class="bs-card-header bs-card-article">
-							<img src="images/icon.png" />
+							<img src="images/longicon.png" />
 							<i ng-class="card.icon" class="pull-right"></i>
 						</div>
 						<div class="bs-card-body">
@@ -103,25 +82,60 @@
 						</div>
 					</div>
 
-					<!-- Form -->
-					<div class="bs-card">
+					<!-- Social -->
+					<div ng-switch-when="social" class="bs-card">
 						<div class="bs-card-header bs-card-article">
-							<img src="images/icon.png" />
-							<i class="fa fa-square" class="pull-right"></i>
+							<img src="images/longicon.png" />
+							<i class="fa fa-twitter pull-right"></i>
 						</div>
 						<div class="bs-card-body">
-							<h4 class="number">Send a message to your MP</h4>
-							<form role="form">
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">Name</label>
-							    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nick Cage">
-							  </div>
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">Email address</label>
-							    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="build@the.news">
-							  </div>
-							  <button type="submit" class="btn btn-default"></button>
-							</form>
+							<div ng-if="card.twitter_timeline" ng-bind-html="card.twitter_timeline"></div>
+							<div ng-if="card.follow_button" ng-bind-html="card.follow_button"></div>
+							<div ng-if="card.like_button" ng-bind-html="card.like_button"></div>
+							<div ng-if="card.tweet_button" ng-bind-html="card.tweet_button"></div>
+							<div ng-if="card.single_tweet" ng-bind-html="card.single_tweet"></div>
+						</div>
+					</div>
+
+					<!-- Form -->
+					<div ng-switch-when="form" class="bs-card">
+						<div class="bs-card-header bs-card-article">
+							<img src="images/longicon.png" />
+							<i class="fa fa-square" class="pull-right"></i>
+						</div>
+						<div ng-switch="card.type">
+							<div ng-switch-when="mp" class="bs-card-body">
+								<h4 class="number">Ask your MP to vote for quality weekend care</h4>
+								<form role="form">
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Name</label>
+								    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nick Cage">
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Email address</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="build@the.news">
+								  </div>
+								  <button type="submit" class="btn btn-default">Email your MP</button>
+								</form>
+							</div>
+							<div ng-switch-when="story" class="bs-card-body">
+								<h4 class="number">Tell us your story</h4>
+								<form role="form">
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Name</label>
+								    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nick Cage">
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Email address</label>
+								    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="build@the.news">
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Your story</label>
+								    <textarea class="form-control" id="exampleInputEmail1"></textarea>
+								  </div>
+								  <button type="submit" class="btn btn-default">Send Message</button>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
