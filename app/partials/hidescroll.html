@@ -1,0 +1,7 @@
+<div class="bs-progress-bar-larger">
+  <button type="button" class="zoom-button btn btn-link"><i class="fa fa-th-large"></i></button>
+  <div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{width}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': width}"></div>
+  </div>
+  <div class="progress-text">{{width.replace('%', '') | number}}%</div>
+</div>

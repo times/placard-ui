@@ -1,0 +1,46 @@
+.zoom-out {
+  .bs-column-wrap {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    transform: translateX(0%) !important;
+  }
+
+  .bs-column {
+    width: 23%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+}
+
+hidescroll {
+  position: relative;
+  bottom: 0px;
+  background: rgba(171, 166, 195, 0.8);
+  overflow: hidden;
+  display: block;
+
+  &.visible {
+    bottom: 54px;
+  }
+
+  .btn.btn-link {
+    float: left;
+    font-size: 50px;
+    color: white;
+    margin-top: -12px;
+  }
+
+  .progress {
+    float: left;
+    width: 86%;
+    margin-top: 19px;
+  }
+
+  .progress-text {
+    position: relative;
+    color: #F77A7A;
+    top: 8px;
+    left: 20px;
+    font-size: 30px;
+  }
+}
